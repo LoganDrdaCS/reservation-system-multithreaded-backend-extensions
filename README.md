@@ -12,11 +12,11 @@
 This project extends a prebuilt full-stack application (see [Credits](#credits)) to demonstrate several key back-end development concepts. The original system provides core functionality for room reservations, availability viewing, and related features. The added functionalities in this project showcase:
 
 - **Multithreading**: Implementing concurrent processing to handle resource-intensive tasks (e.g., generating welcome messages) without blocking the main application threads.
-- **Back-End Integration**: Creating custom RESTful API endpoints with Spring Boot controllers and services, which handle business logic and interact with the database or external systems. These controllers follow REST principles, enabling the front-end to communicate with the back-end via HTTP requests (GET, POST, etc.).
-- **Timezone Considerations**: Handling time zone conversions for meeting scheduling, ensuring that the application adjusts to users' local times.
-- **Front-End Modifications**: Updating the Angular front-end to support dynamic currency conversions for booking rates based on user preferences.
+- **Back-End Integration**: Creating custom RESTful API endpoints with Spring Boot controllers and services, handling business logic and database or external system interactions. These controllers follow REST principles, enabling communication between the front-end and back-end via HTTP requests.
+- **Timezone Considerations**: Handling time zone conversions for meeting scheduling.
+- **Front-End Modifications**: Updating the Angular front-end to display booking rates in multiple currencies.
 
-By implementing these features, this project demonstrates the integration of complex back-end systems, with a modular and clean approach following RESTful principles, while also modifying the front-end to meet specific user requirements.
+This project demonstrates the integration of complex back-end systems using a modular, clean approach that follows RESTful principles, along with front-end modifications to meet specific user requirements.
 
 The application uses:
 - **Spring Boot** for the back-end
@@ -25,7 +25,7 @@ The application uses:
 ## Features
 The following features were designed and implemented to extend the base functionality:
 
-#### 1. **Meeting Invitation with Time Zone Conversion**
+### 1. **Meeting Invitation with Time Zone Conversion**
 - **Files**:
   - `DateTimeController.java`
   - `DateTimeService.java`
@@ -34,7 +34,7 @@ The following features were designed and implemented to extend the base function
   - Uses Java's `ZonedDateTime` API to convert and format times appropriately.
   - Provides a REST endpoint (`/api/datetime/results`) to fetch the time-converted message.
 
-#### 2. **Multithreaded Welcome Messages**
+### 2. **Multithreaded Welcome Messages**
 - **Files**:
   - `WelcomeMessageController.java`
   - `WelcomeMessageService.java`
@@ -42,16 +42,17 @@ The following features were designed and implemented to extend the base function
   - `welcome_message_fr_CA.properties`
 - **Description**:
   - Loads and serves welcome messages in English (US) and French (Canada) from `.properties` files.
-  - Uses a multithreaded service to read and process localization files asynchronously.
-  - Exposes a REST endpoint (`/api/welcome/messages`) to fetch localized messages.
+  - Uses a multithreaded service to asynchronously read and process localization files.
+  - Exposes a REST endpoint (`/api/welcome/messages`) to fetch the localized messages.
 
-#### 3. **Integration with Angular Front-End**
+### 3. **Integration with Angular Front-End**
 - **Files**:
   - `app.component.ts`
   - `app.component.html`
 - **Description**:
-  - Added functionality to fetch and display the meeting invitation and welcome messages in the Angular UI.
-  - Modified booking rates to display alternate currencies.
+  - Fetches and displays the meeting invitation and localized welcome messages in the Angular UI.
+  - Displays booking rates in multiple currencies (hardcoded conversion rates) to simulate international price options.
+
 
 ### File Tree (Relevant Sections)
 Below are the key files related to the custom features:
@@ -114,7 +115,7 @@ Alternatively, see the following .gif:
 ![Demonstration](readme_assets/demonstration.gif)
 
 ## Credits
-The prebuilt full-stack application was taken from a template provided by Western Governors University from course D387 - Advanced Java Concepts. Extensions made to the application were for a submitted project. This project has been further modified (e.g., with new code comments and a README) for publishing on GitHub.
+The prebuilt full-stack application was taken from a template provided by Western Governors University as part of course D387 - Advanced Java Concepts. Extensions to the application were created as part of a submitted project. This version has been further modified (including code comments and README) for publication on GitHub.
 
 ## Contact
 Logan Drda - logan.drda.cs@gmail.com
